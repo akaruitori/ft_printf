@@ -6,18 +6,11 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 19:00:47 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/26 16:07:05 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/27 20:39:31 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-// void				apply_apost(char **s, int len);
-// void				apply_space(char **s);
-// void				apply_plus(char **s);
-// void				apply_width(t_pholder *pholder, int len);
-// void				apply_width_left_align(t_pholder *pholder, int len);
-// void				apply_zeroes(t_pholder *pholder);
 
 void				apply_leading_zeroes_int(t_pholder *pholder,
 											int width, int len)

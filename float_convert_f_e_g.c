@@ -6,20 +6,31 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 19:51:24 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/27 19:53:24 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/27 20:38:55 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void						convert_float_full(long double num,
+static char			*get_sign(long double num)
+{
+	unsigned char	bits[16];
+
+	ft_memcpy((void *)bits, (void *)&num, 16);
+	if (bits[9] & 0x80)
+		return ("-");
+	else
+		return ("");
+}
+
+void				convert_float_full(long double num,
 												 t_pholder *pholder)
 {
-	char					*sign;
-	char					*temp;
-	int						precision;
+	char			*sign;
+	char			*temp;
+	int				precision;
 
-	sign = get_sign(num); //(num >= 0. ? "\0" : "-");
+	sign = get_sign(num);
 	num = (num >= 0.l ? num : -num);
 	precision = (pholder->precision ? pholder->precision->value : 6);
 	if (pholder->precision && pholder->precision->value >= 0)
