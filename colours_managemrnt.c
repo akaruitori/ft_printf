@@ -6,7 +6,7 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 16:11:50 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/28 16:06:24 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 16:31:31 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,15 @@ static int			print_coloured_part(char *start, t_colour *colour, int len)
 	return (coloured_part_len);
 }
 
-void				print_with_colours(char	*line, int line_len)
+void				print_with_colours(char *line, int line_len)
 {
-	static t_colour	colours[COLOURS_NUM] = {{"{green}", 7, switch_to_green},
-											{"{red}", 5, switch_to_red},
-											{"{blue}", 6, switch_to_blue}};
 	char			*temp;
 	char			*tag_st;
 	int				i;
 	int				chars_printed;
+	static t_colour	colours[COLOURS_NUM] = {{"{green}", 7, switch_to_green},
+											{"{red}", 5, switch_to_red},
+											{"{blue}", 6, switch_to_blue}};
 
 	temp = line;
 	while (any_colours_used(temp, line_len))

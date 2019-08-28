@@ -6,7 +6,7 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 16:06:23 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/28 14:06:09 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 16:52:18 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ void			free_pholders(t_pholder **pholders, int pholders_num)
 	int			i;
 
 	i = 0;
-	while(i < pholders_num)
+	while (i < pholders_num)
 	{
-		if  (pholders[i]->flags)
+		if (pholders[i]->flags)
 			ft_memdel((void **)&(pholders[i]->flags));
 		if (pholders[i]->width)
 			ft_memdel((void **)&(pholders[i]->width));

@@ -6,7 +6,7 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 20:25:45 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/28 16:15:37 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 16:54:12 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ void			get_day_and_month(short int days, t_time *time)
 	time->day = days;
 }
 
-char				*get_wday(int day)
+char			*get_wday(int day)
 {
-	static char		*wdays[7] =
-					{"sun", "mon", "tue", "wed", "thu", "fri", "sat"};
+	static char	*wdays[7] = {"sun", "mon", "tue", "wed", "thu", "fri", "sat"};
+	
 	return (wdays[day]);
 }
 

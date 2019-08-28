@@ -6,7 +6,7 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 19:58:47 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/28 16:18:27 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 16:54:30 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void				apply_flags_uint(t_pholder *pholder, int base)
 	if (pholder->flags->alt_form)
 	{
 		if (arg)
-			if (!(*pholder->converted_arg == '0' && 
+			if (!(*pholder->converted_arg == '0' &&
 					pholder->arg_type->is_octal))
 				apply_alt_form_uint(&pholder->converted_arg, base);
 		if (!pholder->converted_arg[0] && pholder->arg_type->is_octal)

@@ -6,19 +6,19 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 15:45:30 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/28 13:30:12 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 16:34:22 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		add_arg_position(t_pholder **pholder, char **temp)
+void			add_arg_position(t_pholder **pholder, char **temp)
 {
 	(*pholder)->arg_pos = ft_strtol(*temp, temp, 10);
 	*temp = *temp + 1;
 }
 
-static void	add_int_type(t_pholder **pholder, char c)
+static void		add_int_type(t_pholder **pholder, char c)
 {
 	if (c == 'i' || c == 'd')
 		(*pholder)->arg_type->is_signed_int = 1;
@@ -42,7 +42,7 @@ static void	add_int_type(t_pholder **pholder, char c)
 		(*pholder)->arg_type->is_time = 1;
 }
 
-static void	add_float_type(t_pholder **pholder, char c)
+static void		add_float_type(t_pholder **pholder, char c)
 {
 	(*pholder)->arg_type->is_float = 1;
 	if (c == 'f' || c == 'F')
@@ -57,9 +57,9 @@ static void	add_float_type(t_pholder **pholder, char c)
 		(*pholder)->is_uppercase = 1;
 }
 
-void		add_specifier(t_pholder **pholder, char **str)
+void			add_specifier(t_pholder **pholder, char **str)
 {
-	char	current;
+	char		current;
 
 	current = **str;
 	if (ft_strchr("iduboxXpk", current))
@@ -72,7 +72,7 @@ void		add_specifier(t_pholder **pholder, char **str)
 		(*pholder)->arg_type->is_char_str = 1;
 }
 
-int		add_procent(t_pholder **pholder)
+int				add_procent(t_pholder **pholder)
 {
 	(*pholder)->is_procent = 1;
 	(*pholder)->is_from_num_arg = 0;

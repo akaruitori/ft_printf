@@ -6,7 +6,7 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 19:51:24 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/28 14:56:25 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 16:51:01 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ static char			*get_sign(long double num)
 		return ("");
 }
 
-void				convert_float_full(long double num,
-												 t_pholder *pholder)
+void				convert_float_full(long double num, t_pholder *pholder)
 {
 	char			*sign;
 	char			*temp;
@@ -32,11 +31,8 @@ void				convert_float_full(long double num,
 
 	sign = get_sign(num);
 	num = (num >= 0.l ? num : -num);
-	precision = (pholder->precision ? pholder->precision->value : 6);
-	if (pholder->precision && pholder->precision->value >= 0)
-		precision = pholder->precision->value;
-	else
-		precision = 6;
+	precision = (pholder->precision && (pholder->precision->value >= 0) ?
+				 pholder->precision->value : 6);
 	num += calculate_rounding(num, precision);
 	if (num > (unsigned long long int)-1)
 		convert_huge_float_full(num, pholder);
@@ -84,10 +80,9 @@ void				convert_float_exp(long double num, t_pholder *pholder)
 	ft_strdel(&temp);
 }
 
-void				convert_float_opt(long double num, t_pholder *pholder)
+static int			calculate_precision_opt_form(t_pholder *pholder)
 {
 	int				precision;
-	int				exp;
 
 	if (pholder->precision)
 	{
@@ -102,6 +97,15 @@ void				convert_float_opt(long double num, t_pholder *pholder)
 		pholder->precision->value = 6;
 		precision = 6;
 	}
+	return (precision);
+}
+
+void				convert_float_opt(long double num, t_pholder *pholder)
+{
+	int				precision;
+	int				exp;
+
+	precision = calculate_precision_opt_form(pholder);
 	exp = get_float_exp(num >= 0.l ? num : -num);
 	if (precision > exp && exp >= -4)
 	{
@@ -112,6 +116,5 @@ void				convert_float_opt(long double num, t_pholder *pholder)
 	{
 		pholder->precision->value--;
 		convert_float_exp(num, pholder);
-
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 19:56:08 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/28 15:19:46 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 16:36:12 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void		insert_commas(char **s, int start_pos, int sep_num, int len)
 	if (!(*s = ft_strnew(len + sep_num + 1)))
 		malloc_error_exit();
 	ft_strncpy(*s, src, start_pos);
-    src += start_pos;
+	src += start_pos;
 	dest = *s + start_pos;
 	while (sep_num--)
 	{

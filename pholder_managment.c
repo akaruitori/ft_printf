@@ -6,7 +6,7 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 15:35:25 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/28 14:11:59 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 16:52:38 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ static t_pholder	*initialize_pholder(int numbered_args_flag)
 	t_pholder		*new_pholder;
 
 	new_pholder = (t_pholder *)malloc(sizeof(t_pholder));
-
 	if (!new_pholder)
 		malloc_error_exit();
 	new_pholder->is_from_num_arg = (numbered_args_flag ? 1 : 0);

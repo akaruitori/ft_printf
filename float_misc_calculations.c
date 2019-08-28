@@ -6,7 +6,7 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 19:42:28 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/28 14:05:15 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 16:51:37 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ long double		calculate_rounding(long double num, int precision)
 	exp_num = num * exp * 10.l;
 	if (((exp_num - (int)exp_num)) == 0.l && ((int)exp_num % 10 == 5))
 		if (((int)(num * exp) % 2) == 1)
-			return ( 1.l / exp);
+			return (1.l / exp);
 	return (addition);
 }
 
