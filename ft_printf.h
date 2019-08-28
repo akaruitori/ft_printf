@@ -6,7 +6,7 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/30 20:54:14 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/28 16:09:14 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 17:41:20 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "libft.h"
 # include <stdarg.h>
 # include <float.h>
+# include <stdint.h>
 
 # define SPECIFIERS "%diouxXbaAfFeEgGcspk"
 # define NOT_SUPPORTED_SPECIFIERS "DCS"

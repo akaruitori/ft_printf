@@ -6,13 +6,11 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 23:21:36 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/28 16:04:42 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 17:43:51 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <float.h>
-#include <stdint.h>
 
 static void			convert_nan(t_pholder *pholder, long double num)
 {
