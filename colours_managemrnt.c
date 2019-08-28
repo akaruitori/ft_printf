@@ -6,7 +6,7 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 16:11:50 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/27 16:12:57 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 13:25:09 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int					any_colours_used(char *line, int line_len)
 
 
 
-char				*find_colour_tag(t_colour colours[COLOURS_NUM],
+static char			*find_colour_tag(t_colour colours[COLOURS_NUM],
 									int *c_num, char *line, int line_len)
 {
 	int				i;
@@ -47,7 +47,7 @@ char				*find_colour_tag(t_colour colours[COLOURS_NUM],
 	return (NULL);
 }
 
-int					print_coloured_part(char *start, t_colour *colour, int len)
+static int			print_coloured_part(char *start, t_colour *colour, int len)
 {
 	int				coloured_part_len;
 

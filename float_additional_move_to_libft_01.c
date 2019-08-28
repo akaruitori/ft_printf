@@ -6,7 +6,7 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 19:24:26 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/27 19:26:50 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 14:49:43 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,7 @@ char						*ft_join_strings(int str_num, ...)
 	int						i;
 
 	va_start(ap, str_num);
-	if (!(args = (char **)malloc(sizeof(char *) * (str_num + 1))))
-		exit(EXIT_FAILURE);
+	args = (char **)ft_malloc_or_exit(sizeof(char *) * (str_num + 1));
 	args[str_num] = NULL;
 	i = 0;
 	while (i < str_num)
@@ -68,4 +67,3 @@ long double					ft_float_power(long double n, int power)
 			result /= n;
 	return (result);
 }
-

@@ -1,7 +1,20 @@
 NAME = libftprintf.a
 
 SOURCE = 	ft_printf.c char.c float.c integer.c pointer.c procent.c \
-			string.c time.c uinteger.c
+			string.c time.c uinteger.c adding_types_to_arg_uses.c \
+			arg_uses_creation.c arg_uses_management.c colours_managemrnt.c \
+			colours_switchers.c converting_args_to_string.c \
+			creating_output_line.c exit.c filling_pholder_struct.c \
+			float_additional_move_to_libft_01.c \
+			float_additional_move_to_libft_02.c float_convert_f_e_g.c \
+			float_convert_for_diff_exp.c float_convert_parts.c float_flags.c \
+			float_fnum_checkers_and_free.c float_hex_convert_rounding.c \
+			float_misc_calculations.c float_modifiers.c freeing_memory.c \
+			modifier_checkers.c modifiers_initializers.c num_arg_checkers.c \
+			num_args_validation.c parsing_modifiers.c pholder_managment.c \
+			procent_checkers.c reading_va_list_args.c \
+			reading_va_list_properties.c time_calculations.c uint_modifiers.c \
+			validation.c
 
 LIB_FILES = 	ft_abs.c ft_bzero.c ft_isalpha.c ft_isdigit.c ft_itoa.c \
 				ft_llint_to_str_base.c ft_memalloc.c ft_memcpy.c ft_memdel.c \

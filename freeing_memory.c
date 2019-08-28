@@ -6,17 +6,17 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 16:06:23 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/27 16:10:18 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 14:06:09 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void				free_arg_uses(t_arg_use **arg_uses)
+void			free_arg_uses(t_arg_use **arg_uses)
 {
-	int				i;
-	t_arg_use		*temp;
-	t_arg_use		*temp_to_free;
+	int			i;
+	t_arg_use	*temp;
+	t_arg_use	*temp_to_free;
 
 	i = 1;
 	ft_memdel((void **)&arg_uses[0]);
@@ -34,9 +34,9 @@ void				free_arg_uses(t_arg_use **arg_uses)
 	}
 }
 
-void				free_args(void **args)
+void			free_args(void **args)
 {
-	int				i;
+	int			i;
 
 	i = 0;
 	while (args[i])
@@ -46,9 +46,9 @@ void				free_args(void **args)
 	}
 }
 
-void				free_pholders(t_pholder **pholders, int pholders_num)
+void			free_pholders(t_pholder **pholders, int pholders_num)
 {
-	int				i;
+	int			i;
 
 	i = 0;
 	while(i < pholders_num)

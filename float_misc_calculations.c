@@ -6,17 +6,17 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 19:42:28 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/27 19:46:33 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 14:05:15 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-long double					calculate_rounding(long double num, int precision)
+long double		calculate_rounding(long double num, int precision)
 {
-	long double				addition;
-	long double				exp;
-	long double				exp_num;
+	long double	addition;
+	long double	exp;
+	long double	exp_num;
 
 	if (precision > LDBL_DIG)
 		precision = LDBL_DIG;
@@ -29,14 +29,14 @@ long double					calculate_rounding(long double num, int precision)
 	return (addition);
 }
 
-short int					get_exp_bias(int long_flag)
+short int		get_exp_bias(int long_flag)
 {
 	return (long_flag ? LDBL_EXP_BIAS : DBL_EXP_BIAS);
 }
 
-int							get_float_order(long double num)
+int				get_float_order(long double num)
 {
-	int						order;
+	int			order;
 
 	order = 1;
 	while (num > 10.l)
@@ -47,16 +47,16 @@ int							get_float_order(long double num)
 	return (order);
 }
 
-long double					get_long_double_num(t_pholder *pholder)
+long double		get_long_double_num(t_pholder *pholder)
 {
 	if (pholder->modifier && pholder->modifier->is_big_l)
 		return (*(long double *)pholder->arg);
 	return ((long double)*(double *)pholder->arg);
 }
 
-int					get_float_exp(long double num)
+int				get_float_exp(long double num)
 {
-	int				result;
+	int			result;
 
 	result = 0;
 	while ((long long int)num >= 10)

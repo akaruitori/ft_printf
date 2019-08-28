@@ -6,15 +6,15 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 19:56:08 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/27 19:57:01 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 15:19:46 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void				apply_plus(char **s)
+void		apply_plus(char **s)
 {
-	char			*temp;
+	char	*temp;
 
 	temp = *s;
 	if (ft_strchr(HEX_DIGITS, *temp) || ft_strequ(temp, "inf") ||
@@ -25,9 +25,9 @@ void				apply_plus(char **s)
 	}
 }
 
-void				apply_space(char **s)
+void		apply_space(char **s)
 {
-	char			*temp;
+	char	*temp;
 
 	temp = *s;
 	if (ft_strchr(HEX_DIGITS, *temp) || ft_strequ(temp, "inf") ||
@@ -41,15 +41,16 @@ void				apply_space(char **s)
 	}
 }
 
-void				insert_commas(char **s, int start_pos, int sep_num, int len)
+void		insert_commas(char **s, int start_pos, int sep_num, int len)
 {
-	char			*dest;
-	char			*src;
-	char			*temp;
+	char	*dest;
+	char	*src;
+	char	*temp;
 
 	src = *s;
 	temp = *s;
-	*s = ft_strnew(len + sep_num + 1);
+	if (!(*s = ft_strnew(len + sep_num + 1)))
+		malloc_error_exit();
 	ft_strncpy(*s, src, start_pos);
     src += start_pos;
 	dest = *s + start_pos;
@@ -64,11 +65,11 @@ void				insert_commas(char **s, int start_pos, int sep_num, int len)
 	ft_strdel(&temp);
 }
 
-void				apply_apost(char **s, int len)
+void		apply_apost(char **s, int len)
 {
-	int				sep_num;
-	char			*temp;
-	char			*start;
+	int		sep_num;
+	char	*temp;
+	char	*start;
 
 	sep_num = 0;
 	temp = *s;

@@ -6,13 +6,13 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 20:25:45 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/27 20:28:34 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 15:38:13 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int					is_leap_year(short int year)
+static int		is_leap_year(short int year)
 {
 	return (!(year % 4) && ((year % 100) || !(year % 400)));
 }
@@ -48,7 +48,7 @@ t_time				*calculate_date_and_time(int epoch_time)
 	int				days_this_year;
 	int				seconds_this_day;
 
-	time = (t_time *)malloc(sizeof(t_time));
+	time = (t_time *)ft_malloc_or_exit(sizeof(t_time));
 	time->epoch_time = epoch_time;
 	time->year = 1970 + time->epoch_time / SECONDS_IN_A_YEAR;
 	leap_years_to_date = (time->year - 1969) / 4;

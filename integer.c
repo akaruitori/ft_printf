@@ -6,7 +6,7 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 19:00:47 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/27 20:39:31 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 15:30:27 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void				apply_leading_zeroes_int(t_pholder *pholder,
 		offset = width - len;
 		if (temp[0] == '-')
 			offset++;
-		pholder->converted_arg = ft_strnew(width + 2);
+		if (!(pholder->converted_arg = ft_strnew(width + 2)))
+			malloc_error_exit();
 		ft_memset(pholder->converted_arg, '0', offset);
 		ft_strcpy(pholder->converted_arg + offset, temp);
 		if (pholder->converted_arg[offset] == '-')
@@ -39,7 +40,7 @@ void				apply_leading_zeroes_int(t_pholder *pholder,
 		pholder->converted_arg[0] = '\0';
 }
 
-void				apply_flags_int(t_pholder *pholder)
+static void			apply_flags_int(t_pholder *pholder)
 {
 	if (pholder->flags->plus)
 		apply_plus(&pholder->converted_arg);
@@ -49,7 +50,7 @@ void				apply_flags_int(t_pholder *pholder)
 		apply_apost(&pholder->converted_arg, ft_strlen(pholder->converted_arg));
 }
 
-void				apply_str_modifiers_int(t_pholder *pholder)
+static void			apply_str_modifiers_int(t_pholder *pholder)
 {
 	int				len;
 
@@ -87,7 +88,8 @@ void				convert_int(t_pholder *pholder)
 		arg = (long long int)(*(long int *)pholder->arg);
 	else
 		arg = *(long long int *)pholder->arg;
-	pholder->converted_arg = ft_llint_to_str_base(arg, 10);
+	if (!(pholder->converted_arg = ft_llint_to_str_base(arg, 10)))
+		malloc_error_exit();
 	apply_str_modifiers_int(pholder);
 	pholder->arg_len = ft_strlen(pholder->converted_arg);
 }

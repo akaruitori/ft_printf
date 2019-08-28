@@ -6,13 +6,13 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 00:38:39 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/27 20:28:39 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 15:41:35 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char				*time_to_str(t_time *time)
+static char			*time_to_str(t_time *time)
 {
 	char			*hour;
 	char			*minute;
@@ -29,7 +29,7 @@ char				*time_to_str(t_time *time)
 	return (result);
 }
 
-char				*date_to_str(t_time *time)
+static char			*date_to_str(t_time *time)
 {
 	char			*year;
 	char			*month;
@@ -46,7 +46,7 @@ char				*date_to_str(t_time *time)
 	return (result);
 }
 
-char				*date_time_to_str(t_time *time)
+static char			*date_time_to_str(t_time *time)
 {
 	char			*time_str;
 	char			*date;
@@ -60,7 +60,7 @@ char				*date_time_to_str(t_time *time)
 	return (result);
 }
 
-char				*full_date_time_to_str(t_time *time)
+static char			*full_date_time_to_str(t_time *time)
 {
 	char			*date_time;
 	char			*wday;

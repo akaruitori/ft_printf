@@ -6,17 +6,17 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 15:49:12 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/27 15:52:45 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 14:42:38 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int					is_valid_uses(t_arg_use **arg_uses)
+static int		is_valid_uses(t_arg_use **arg_uses)
 {
-	char			*temp_type;
-	t_arg_use		*temp_arg_use;
-	int				i;
+	char		*temp_type;
+	t_arg_use	*temp_arg_use;
+	int			i;
 
 	i = 1;
 	while (arg_uses[i])
@@ -34,7 +34,7 @@ int					is_valid_uses(t_arg_use **arg_uses)
 	return (1);
 }
 
-void			*get_arg_address(t_arg_use *arg_use)
+static void		*get_arg_address(t_arg_use *arg_use)
 {
 	if (arg_use->purpose == NUM_ARG)
 		return (arg_use->pholder->arg);
@@ -47,10 +47,10 @@ void			*get_arg_address(t_arg_use *arg_use)
 	}
 }
 
-void				save_args_for_all_pholders(t_arg_use *arg_use)
+void			save_args_for_all_pholders(t_arg_use *arg_use)
 {
-	t_arg_use		*temp_arg_use;
-	void			*arg;
+	t_arg_use	*temp_arg_use;
+	void		*arg;
 
 	arg = get_arg_address(arg_use);
 	temp_arg_use = arg_use->same_pos_next;
@@ -68,14 +68,13 @@ void				save_args_for_all_pholders(t_arg_use *arg_use)
 	}
 }
 
-void				**get_unique_args(t_arg_use **arg_uses, int args_num)
+static void		**get_unique_args(t_arg_use **arg_uses, int args_num)
 {
-	void			**args;
-	int				aui;
-	int				ai;
+	void		**args;
+	int			aui;
+	int			ai;
 
-	if (!(args = (void **)malloc(sizeof(void *) * (args_num + 1))))
-		exit(EXIT_FAILURE);
+	args = (void **)ft_malloc_or_exit(sizeof(void *) * (args_num + 1));
 	args[args_num] = NULL;
 	aui = 0;
 	ai = 0;
@@ -97,10 +96,10 @@ void				**get_unique_args(t_arg_use **arg_uses, int args_num)
 	return (args);
 }
 
-void				**save_args(va_list ap, t_pholder **pholders, int args_num)
+void			**save_args(va_list ap, t_pholder **pholders, int args_num)
 {
-	t_arg_use		**arg_uses;
-	void			**args;
+	t_arg_use	**arg_uses;
+	void		**args;
 
 
 	arg_uses = save_arg_uses(pholders, args_num);

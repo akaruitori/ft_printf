@@ -6,13 +6,13 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 15:54:14 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/27 15:58:26 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 15:41:35 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void				read_int_arg(va_list ap, char *type, int purpose,
+static void		read_int_arg(va_list ap, char *type, int purpose,
 								t_pholder *pholder)
 {
 	if (!type[1] || !ft_strcmp(type, "ich") || !ft_strcmp(type, "ishi"))
@@ -26,57 +26,57 @@ void				read_int_arg(va_list ap, char *type, int purpose,
 		}
 		else
 		{
-			pholder->arg = malloc(sizeof(int));
+			pholder->arg = ft_malloc_or_exit(sizeof(int));
 			*(int *)pholder->arg = va_arg(ap, int);
 		}
 	}
 	else if (!ft_strcmp(type, "ili"))
 	{
-		pholder->arg = malloc(sizeof(long int));
+		pholder->arg = ft_malloc_or_exit(sizeof(long int));
 		*(long int *)pholder->arg = va_arg(ap, long int);
 	}
 	else
 	{
-		pholder->arg = malloc(sizeof(long long int));
+		pholder->arg = ft_malloc_or_exit(sizeof(long long int));
 		*(long long int *)pholder->arg = va_arg(ap, long long int);
 	}
 }
 
-void				read_uint_arg(va_list ap, char *type, t_pholder *pholder)
+static void		read_uint_arg(va_list ap, char *type, t_pholder *pholder)
 {
 	if (!ft_strcmp(type, "ui") || !ft_strcmp(type, "uch") ||
 		!ft_strcmp(type, "ushi"))
 	{
-		pholder->arg = malloc(sizeof(unsigned int));
+		pholder->arg = ft_malloc_or_exit(sizeof(unsigned int));
 		*(unsigned int *)(pholder->arg) = va_arg(ap, unsigned int);
 	}
 	else if (!ft_strcmp(type, "uli"))
 	{
-		pholder->arg = malloc(sizeof(unsigned long int));
+		pholder->arg = ft_malloc_or_exit(sizeof(unsigned long int));
 		*(unsigned long int *)(pholder->arg) = va_arg(ap, unsigned long int);
 	}
 	else
 	{
-		pholder->arg = malloc(sizeof(unsigned long long int));
+		pholder->arg = ft_malloc_or_exit(sizeof(unsigned long long int));
 		*(unsigned long long int *)(pholder->arg) = va_arg(ap, unsigned long long int);
 	}
 }
 
-void				read_double_arg(va_list ap, char *type, t_pholder *pholder)
+static void		read_double_arg(va_list ap, char *type, t_pholder *pholder)
 {
 	if (!ft_strcmp(type, "dbl"))
 	{
-		pholder->arg = malloc(sizeof(double));
+		pholder->arg = ft_malloc_or_exit(sizeof(double));
 		*(double *)pholder->arg = va_arg(ap, double);
 	}
 	else
 	{
-		pholder->arg = malloc(sizeof(long double));
+		pholder->arg = ft_malloc_or_exit(sizeof(long double));
 		*(long double *)pholder->arg = va_arg(ap, long double);
 	}
 }
 
-void				read_pointer_arg(va_list ap, char *type, t_pholder *pholder)
+static void		read_pointer_arg(va_list ap, char *type, t_pholder *pholder)
 {
 	if (pholder->arg_type->is_char_str)
 		pholder->arg = va_arg(ap, char *);
@@ -86,10 +86,10 @@ void				read_pointer_arg(va_list ap, char *type, t_pholder *pholder)
 	}
 }
 
-void				read_args(va_list ap, t_arg_use **arg_uses)
+void		read_args(va_list ap, t_arg_use **arg_uses)
 {
-	int				i;
-	char			*type;
+	int		i;
+	char	*type;
 
 	i = 1;
 	while (arg_uses[i])

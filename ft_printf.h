@@ -6,7 +6,7 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/30 20:54:14 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/27 20:30:30 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 14:17:25 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,7 +184,6 @@ unsigned int				has_numbered_args(char *pholder_start);
 */
 int							count_pholders(const char *format);
 char						*find_next_pholder(char **format);
-t_pholder					*initialize_pholder(int numbered_args_flag);
 int							parse_a_pholder(char *start, t_pholder **pholder,
 											int num_args_flag, int pholder_num);
 
@@ -192,6 +191,7 @@ int							parse_a_pholder(char *start, t_pholder **pholder,
 ** exit
 */
 void						malloc_error_exit();
+void						*ft_malloc_or_exit(size_t size);
 
 /*
 ** modifiers_initializers
@@ -217,36 +217,24 @@ int							parse(const char *format, t_pholder **pholders);
 ** filling_pholder_struct
 */
 void						add_arg_position(t_pholder **pholder, char **temp);
-void						add_int_type(t_pholder **pholder, char c);
-void						add_float_type(t_pholder **pholder, char c);
 void						add_specifier(t_pholder **pholder, char **str);
 int							add_procent(t_pholder **pholder);
 
 /*
 ** num_args_validation
 */
-int							*save_args_quantity(t_pholder **p, int args_num);
 int							check_and_count_dub_args(t_pholder **pholders,
 													int expected_args_num);
 
 /*
 ** arg_uses_creation
 */
-t_arg_use					*init_new_arg_use(void);
-t_arg_use					**initialize_arg_uses(int arg_num);
-void						fill_arg_use(t_arg_use *arg_use, t_pholder *pholder,
-										int purpose, char *type);
-void						add_arg_use(t_arg_use **arg_use, t_pholder *pholder,
-										int purpose, char *type);
 t_arg_use					**save_arg_uses(t_pholder **pholders, int arg_num);
 
 /*
 ** arg_uses_management
 */
-int							is_valid_uses(t_arg_use **arg_uses);
-void						*get_arg_address(t_arg_use *arg_use);
 void						save_args_for_all_pholders(t_arg_use *arg_use);
-void						**get_unique_args(t_arg_use **arg_uses, int a_num);
 void						**save_args(va_list ap, t_pholder **p, int a_num);
 
 /*
@@ -266,27 +254,17 @@ void						read_precision_value_from_arg(t_pholder *pholder,
 /*
 ** reading_va_list_args
 */
-void						read_int_arg(va_list ap, char *type, int purpose,
-										t_pholder *pholder);
-void						read_uint_arg(va_list ap, char *type, t_pholder *p);
-void						read_double_arg(va_list ap, char *t, t_pholder *p);
-void						read_pointer_arg(va_list ap, char *t, t_pholder *p);
 void						read_args(va_list ap, t_arg_use **arg_uses);
 
 /*
 ** converting_args_to_string
 */
-void						convert_arg(t_pholder *pholder);
 int							convert_args_to_strings(t_pholder **pholders);
 
 /*
 ** creating_output_line
 */
 int							count_pholders_len(t_pholder **pholders);
-void						create_line(t_pholder **ps, const char *format,
-										int line_len, char **line);
-int							create_output_string(char **line, t_pholder **ps,
-												va_list ap, const char *format);
 int							handle_formatted_input(va_list ap, const char *fmt,
 													int ps_num, char **line);
 
@@ -309,9 +287,6 @@ void						switch_to_default(void);
 ** colours_managemrnt
 */
 int							any_colours_used(char *line, int line_len);
-char						*find_colour_tag(t_colour colours[COLOURS_NUM],
-											int *c_num, char *line, int len);
-int							print_coloured_part(char *st, t_colour *c, int len);
 void						print_with_colours(char	*line, int line_len);
 
 /*
@@ -339,7 +314,6 @@ void						convert_uint(t_pholder *pholder);
 void						convert_procent(t_pholder *pholder);
 void						convert_string(t_pholder *pholder);
 void						convert_pointer(t_pholder *pholder);
-void						convert_time(t_pholder *pholder);
 
 /*
 ** float_additional_move_to_libft_01
@@ -375,16 +349,12 @@ int							get_float_exp(long double num);
 ** float_convert_parts
 */
 void						del_trailing_point_zeroes(char *s);
-char						*convert_exp_to_str(t_float *fnum, int long_flag);
-char						*convert_man_to_str(t_float *fnum, int long_flag);
 void						convert_float_parts_to_hexstr(t_float *f,
 							int l_flag, int p_flag, unsigned char alt_form_f);
 
 /*
 ** float_hex_convert_rounding
 */
-void						apply_precision_hex(t_float *fnum, int precision);
-void						round_hex(t_float *fnum, int p, int long_flag);
 void						convert_long_double_hex(t_pholder *pholder);
 void						convert_double_hex(t_pholder *pholder);
 
@@ -399,10 +369,6 @@ void						convert_medium_float_full(long double num,
 													t_pholder *pholder);
 void						convert_small_float_full(long double num,
 													t_pholder *pholder);
-
-
-void						convert_nan(t_pholder *pholder, long double num);
-void						convert_inf(t_pholder *pholder, long double num);
 
 /*
 ** float_convert_f_e_g
@@ -428,7 +394,6 @@ void						apply_width(t_pholder *pholder, int len);
 void						apply_str_modifiers_float(t_pholder *pholder,
 													long double num);
 
-
 /*
 ** uint_modifiers
 */
@@ -443,24 +408,19 @@ void						apply_str_modifiers_uint(t_pholder *p, int base);
 */
 void						apply_leading_zeroes_int(t_pholder *pholder,
 													int width, int len);
-void						apply_flags_int(t_pholder *pholder);
-void						apply_str_modifiers_int(t_pholder *pholder);
 void						convert_int(t_pholder *pholder);
 
 /*
 ** time_calculations
 */
-int							is_leap_year(short int year);
 void						get_day_and_month(short int days, t_time *time);
 char						*get_wday(int day);
 t_time						*calculate_date_and_time(int epoch_time);
+char						*convert_with_nessesery_zero(unsigned char num);
 
 /*
 ** time
 */
-char						*time_to_str(t_time *time);
-char						*date_to_str(t_time *time);
-char						*date_time_to_str(t_time *time);
-char						*full_date_time_to_str(t_time *time);
+void						convert_time(t_pholder *pholder);
 
 #endif

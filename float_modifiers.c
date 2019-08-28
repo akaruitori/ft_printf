@@ -6,7 +6,7 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 19:57:12 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/27 19:58:12 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 15:28:07 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void				apply_width_left_align(t_pholder *pholder, int len)
 
 	fill_len = pholder->width->value - len;
 	temp = pholder->converted_arg;
-	pholder->converted_arg = ft_strnew(pholder->width->value + 1);
+	if (!(pholder->converted_arg = ft_strnew(pholder->width->value + 1)))
+		malloc_error_exit();
 	ft_memset(pholder->converted_arg, ' ', pholder->width->value);
 	ft_strncpy(pholder->converted_arg, temp, len);
 	ft_strdel(&temp);
@@ -32,7 +33,8 @@ void				apply_width(t_pholder *pholder, int len)
 
 	fil_len = pholder->width->value - len;
 	temp = pholder->converted_arg;
-	pholder->converted_arg = ft_strnew(fil_len + len + 1);
+	if (!(pholder->converted_arg = ft_strnew(fil_len + len + 1)))
+		malloc_error_exit();
 	ft_memset(pholder->converted_arg, ' ', fil_len);
 	ft_strcpy(pholder->converted_arg + fil_len, temp);
 	ft_strdel(&temp);
@@ -60,6 +62,19 @@ void				apply_zeroes(t_pholder *pholder)
 	else if (pholder->flags->space && (*pholder->converted_arg != '-'))
 		*pholder->converted_arg = ' ';
 }
+static void			apply_width_float(t_pholder *pholder, int len,
+								unsigned char nan_flag, unsigned char inf_flag)
+{
+	if (pholder->width && (pholder->width->value > len))
+	{
+		if (pholder->flags && pholder->flags->left_align)
+			apply_width_left_align(pholder, len);
+		else
+			apply_width(pholder, len);
+		if (pholder->flags && pholder->flags->zeroes && !inf_flag && !nan_flag)
+			apply_zeroes(pholder);
+	}
+}
 
 void				apply_str_modifiers_float(t_pholder *pholder,
 											long double num)
@@ -81,13 +96,5 @@ void				apply_str_modifiers_float(t_pholder *pholder,
 			apply_space(&pholder->converted_arg);
 	}
 	len = ft_strlen(pholder->converted_arg);
-	if (pholder->width && (pholder->width->value > len))
-	{
-		if (pholder->flags && pholder->flags->left_align)
-			apply_width_left_align(pholder, len);
-		else
-			apply_width(pholder, len);
-		if (pholder->flags && pholder->flags->zeroes && !inf_flag && !nan_flag)
-			apply_zeroes(pholder);
-	}
+	apply_width_float(pholder, len, nan_flag, inf_flag);
 }

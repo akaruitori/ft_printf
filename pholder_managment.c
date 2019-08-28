@@ -6,17 +6,17 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 15:35:25 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/27 15:38:30 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 14:11:59 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int				count_pholders(const char *format)
+int					count_pholders(const char *format)
 {
-	int			pholders_num;
-	char		*temp;
-	int			pholder_len;
+	int				pholders_num;
+	char			*temp;
+	int				pholder_len;
 
 	temp = (char *)format;
 	pholders_num = 0;
@@ -35,11 +35,11 @@ int				count_pholders(const char *format)
 	return (pholders_num);
 }
 
-char					*find_next_pholder(char **format)
+char				*find_next_pholder(char **format)
 {
-	char				*start;
-	char				*temp;
-	int					diff;
+	char			*start;
+	char			*temp;
+	int				diff;
 
 	temp = *format;
 	while (*temp && *temp != '%')
@@ -63,7 +63,7 @@ char					*find_next_pholder(char **format)
 	return (start);
 }
 
-t_pholder			*initialize_pholder(int numbered_args_flag)
+static t_pholder	*initialize_pholder(int numbered_args_flag)
 {
 	t_pholder		*new_pholder;
 
@@ -88,8 +88,8 @@ t_pholder			*initialize_pholder(int numbered_args_flag)
 int					parse_a_pholder(char *start, t_pholder **pholder,
 									int numbered_args_flag, int pholder_num)
 {
-	int			args_used;
-	char		*temp;
+	int				args_used;
+	char			*temp;
 
 	args_used = 1;
 	temp = start;

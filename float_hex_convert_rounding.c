@@ -6,13 +6,13 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 19:49:31 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/27 19:50:29 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 15:21:11 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void						apply_precision_hex(t_float *fnum, int precision)
+static void					apply_precision_hex(t_float *fnum, int precision)
 {
 	char					*temp;
 	int						man_len;
@@ -21,7 +21,8 @@ void						apply_precision_hex(t_float *fnum, int precision)
 	if (precision > man_len)
 	{
 		temp = fnum->man_str;
-		fnum->man_str = ft_strnew(precision + 1);
+		if (!(fnum->man_str = ft_strnew(precision + 1)))
+			malloc_error_exit();
 		ft_strcpy(fnum->man_str, temp);
 		ft_memset((void *)(fnum->man_str + man_len), '0', precision - man_len);
 		ft_strdel(&temp);
@@ -30,7 +31,7 @@ void						apply_precision_hex(t_float *fnum, int precision)
 		ft_bzero((void *)(fnum->man_str + precision), man_len - precision);
  }
 
-void						round_hex(t_float *fnum, int precision,
+static void					round_hex(t_float *fnum, int precision,
 										int long_flag)
 {
 	int						man_len;

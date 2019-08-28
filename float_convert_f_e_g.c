@@ -6,7 +6,7 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 19:51:24 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/27 20:38:55 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 14:56:25 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ void				convert_float_exp(long double num, t_pholder *pholder)
 	num /= ft_float_power(10.l, exp);
 	convert_float_full(num, pholder);
 	temp = ft_itoa(ft_abs(exp));
-	exp_str = ft_strnew(4 + ft_strlen(temp));
+	if (!(exp_str = ft_strnew(4 + ft_strlen(temp))) || !temp)
+		malloc_error_exit();
 	ft_strcpy(exp_str, "e");
 	i = 1;
 	exp_str[i++] = (exp >= 0 ? '+' : '-');

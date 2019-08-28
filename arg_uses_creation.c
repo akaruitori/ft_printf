@@ -6,19 +6,17 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 15:47:29 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/27 15:48:59 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 14:42:06 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_arg_use			*init_new_arg_use(void)
+static t_arg_use	*init_new_arg_use(void)
 {
 	t_arg_use		*new;
 
-	new = (t_arg_use *)malloc(sizeof(t_arg_use));
-	if (!new)
-		exit(EXIT_FAILURE);
+	new = (t_arg_use *)ft_malloc_or_exit(sizeof(t_arg_use));
 	new->purpose = 0;
 	new->type = "\0";
 	new->pholder = NULL;
@@ -26,13 +24,13 @@ t_arg_use			*init_new_arg_use(void)
 	return (new);
 }
 
-t_arg_use			**initialize_arg_uses(int arg_num)
+static t_arg_use	**initialize_arg_uses(int arg_num)
 {
 	t_arg_use		**arg_uses;
 	int				i;
 
-	if (!(arg_uses = (t_arg_use **)malloc(sizeof(t_arg_use *) * (arg_num + 2))))
-		exit(EXIT_FAILURE);
+	arg_uses = (t_arg_use **)ft_malloc_or_exit(sizeof(t_arg_use *) *
+												(arg_num + 2));
 	arg_uses[arg_num + 1] = NULL;
 	i = 0;
 	while (i <= arg_num)
@@ -43,7 +41,7 @@ t_arg_use			**initialize_arg_uses(int arg_num)
 	return (arg_uses);
 }
 
-void				fill_arg_use(t_arg_use *arg_use, t_pholder *pholder,
+static void			fill_arg_use(t_arg_use *arg_use, t_pholder *pholder,
 								int purpose, char *type)
 {
 	arg_use->purpose = purpose;
@@ -52,7 +50,7 @@ void				fill_arg_use(t_arg_use *arg_use, t_pholder *pholder,
 	arg_use->same_pos_next = NULL;
 }
 
-void				add_arg_use(t_arg_use **arg_use, t_pholder *pholder,
+static void			add_arg_use(t_arg_use **arg_use, t_pholder *pholder,
 								int purpose, char *type)
 {
 	t_arg_use		*new_arg_use;

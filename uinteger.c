@@ -6,13 +6,13 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 03:34:33 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/27 20:39:34 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 15:40:59 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-short int		determine_base(t_pholder *pholder)
+short int					determine_base(t_pholder *pholder)
 {
 	if (pholder->arg_type->is_binary)
 		return (2);
@@ -39,7 +39,8 @@ void						convert_uint(t_pholder *pholder)
 		arg = (unsigned long long int)(*(unsigned long int *)pholder->arg);
 	else
 		arg = *(unsigned long long int *)pholder->arg;
-	pholder->converted_arg = ft_ullint_to_str_base(arg, base);
+	if (!(pholder->converted_arg = ft_ullint_to_str_base(arg, base)))
+		malloc_error_exit();
 	apply_str_modifiers_uint(pholder, base);
 	if (pholder->is_uppercase)
 		ft_capitalize(pholder->converted_arg);
