@@ -6,7 +6,7 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 20:25:45 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/28 15:38:13 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 16:15:37 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ char				*get_wday(int day)
 	return (wdays[day]);
 }
 
-t_time				*calculate_date_and_time(int epoch_time)
+t_time			*calculate_date_and_time(int epoch_time)
 {
-	t_time			*time;
-	int				leap_years_to_date;
-	int				days_since_epoch;
-	int				days_this_year;
-	int				seconds_this_day;
+	t_time		*time;
+	int			leap_years_to_date;
+	int			days_since_epoch;
+	int			days_this_year;
+	int			seconds_this_day;
 
 	time = (t_time *)ft_malloc_or_exit(sizeof(t_time));
 	time->epoch_time = epoch_time;
@@ -64,10 +64,10 @@ t_time				*calculate_date_and_time(int epoch_time)
 	return (time);
 }
 
-char				*convert_with_nessesery_zero(unsigned char num)
+char			*convert_with_nessesery_zero(unsigned char num)
 {
-	char			*temp;
-	char			*result;
+	char		*temp;
+	char		*result;
 
 	temp = ft_itoa(num);
 	if (num < 10)

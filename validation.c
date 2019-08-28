@@ -6,7 +6,7 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 15:13:29 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/28 14:18:20 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 16:20:15 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int					is_correct_property_order(char **s, int num_arg_flag)
 			return (0);
 	}
 	while (**s && ft_isdigit(**s))
-			(*s)++;
+		(*s)++;
 	return (1);
 }
 
@@ -46,7 +46,7 @@ int					check_for_lh_modifiers(t_modifier *modifier, char *s)
 	}
 	else if (*s == 'h')
 	{
-		if (*(s + 1) =='h')
+		if (*(s + 1) == 'h')
 		{
 			modifier->is_hh = 1;
 			return (2);
@@ -119,7 +119,7 @@ int					is_valid_pholder(char *s)
 					return (0);
 			}
 			else
-				return(i);
+				return (i);
 		}
 		i++;
 	}

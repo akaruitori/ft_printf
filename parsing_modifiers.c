@@ -6,7 +6,7 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 15:43:05 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/28 14:10:35 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 16:14:21 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int					add_precision(t_pholder **pholder, char **str,
 	else
 		precision->value = ft_strtol(current, &current, 10);
 	*str = current;
-	(*pholder)->precision = precision; //less than 0 check
+	(*pholder)->precision = precision;
 	return (args_used);
 }
 
@@ -123,7 +123,7 @@ int					parse(const char *format, t_pholder **pholders)
 	format_temp = (char *)format;
 	numbered_args_flag = (is_numbered_arg_used(format_temp) ? 1 : 0);
 	expected_args_num = 0;
-	while ((pholder_start = find_next_pholder(&format_temp))) // + 1?
+	while ((pholder_start = find_next_pholder(&format_temp)))
 	{
 		if ((has_numbered_args(pholder_start) ^ numbered_args_flag))
 			if (!(is_procent_pholder(pholder_start)))

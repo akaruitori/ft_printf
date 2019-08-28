@@ -6,7 +6,7 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 23:21:36 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/28 13:12:47 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 16:04:42 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static void			convert_nan(t_pholder *pholder, long double num)
 		pholder->converted_arg = ft_strcpy(ft_strnew(4), "-nan");
 	else
 		pholder->converted_arg = ft_strcpy(ft_strnew(5), "nan");
-	
 }
 
 static void			convert_inf(t_pholder *pholder, long double num)

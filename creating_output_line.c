@@ -6,7 +6,7 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 16:00:19 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/28 14:47:53 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 16:04:08 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ static void		create_line(t_pholder **pholders, const char *format,
 	if (*format_start)
 		ft_strncpy(*line + copied_len, format_start, ft_strlen(format_start));
 }
-
 
 static int		create_output_string(char **line, t_pholder **pholders,
 									va_list ap, const char *format)

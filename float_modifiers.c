@@ -6,7 +6,7 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 19:57:12 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/28 15:28:07 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 16:08:51 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void				apply_width(t_pholder *pholder, int len)
 	ft_strdel(&temp);
 }
 
-
 void				apply_zeroes(t_pholder *pholder)
 {
 	char			*temp;
@@ -62,6 +61,7 @@ void				apply_zeroes(t_pholder *pholder)
 	else if (pholder->flags->space && (*pholder->converted_arg != '-'))
 		*pholder->converted_arg = ' ';
 }
+
 static void			apply_width_float(t_pholder *pholder, int len,
 								unsigned char nan_flag, unsigned char inf_flag)
 {

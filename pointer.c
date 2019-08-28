@@ -6,7 +6,7 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/04 03:21:11 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/28 15:33:56 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 16:14:54 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void						convert_pointer(t_pholder *pholder)
 			apply_width_left_align(pholder, pholder->arg_len);
 		else
 			apply_width(pholder, pholder->arg_len);
-
 	}
 	pholder->arg_len = ft_strlen(pholder->converted_arg);
 }

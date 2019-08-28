@@ -6,7 +6,7 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 19:49:31 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/28 15:21:11 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 16:08:07 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void					apply_precision_hex(t_float *fnum, int precision)
 	}
 	else if (precision < man_len)
 		ft_bzero((void *)(fnum->man_str + precision), man_len - precision);
- }
+}
 
 static void					round_hex(t_float *fnum, int precision,
 										int long_flag)
@@ -38,7 +38,8 @@ static void					round_hex(t_float *fnum, int precision,
 	unsigned long long int	man_temp;
 
 	man_len = (long_flag ? LDBL_MAN_LEN / 4 : DBL_MAN_LEN / 4);
-	man_temp = fnum->mantissa + 8.0 * ft_float_power(16, man_len - precision - 1);
+	man_temp = fnum->mantissa + 8.0 *
+				ft_float_power(16, man_len - precision - 1);
 	if (man_temp < fnum->mantissa)
 	{
 		fnum->exp += 4;
@@ -62,9 +63,8 @@ void						convert_long_double_hex(t_pholder *pholder)
 	char					*temp;
 	unsigned char			alt_form_flag;
 
-	num = *(long double *)pholder->arg; //
-	num_bits = *(__uint128_t *)&num; //
-
+	num = *(long double *)pholder->arg;
+	num_bits = *(__uint128_t *)&num;
 	fnum.sign = (unsigned short)(num_bits >> (79) & 0x1);
 	fnum.exp = (short int)((num_bits >> LDBL_MAN_LEN) & LDBL_EXP_MASK);
 	fnum.mantissa = (unsigned long long)(num_bits & LDBL_MAN_MASK);
@@ -91,7 +91,6 @@ void						convert_double_hex(t_pholder *pholder)
 	unsigned char			alt_form_flag;
 
 	num_bits = *(u_int64_t *)pholder->arg;
-
 	fnum.sign = (unsigned char)(num_bits >> (DBL_EXP_LEN + DBL_MAN_LEN));
 	fnum.exp = (short int)((num_bits >> DBL_MAN_LEN) & DBL_EXP_MASK);
 	fnum.mantissa = (unsigned long long)(num_bits & DBL_MAN_MASK);

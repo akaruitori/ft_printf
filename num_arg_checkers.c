@@ -6,7 +6,7 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 15:30:51 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/28 14:08:50 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 16:12:58 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,8 @@ int				is_correct_num_arg_order(char **s)
 	return (1);
 }
 
-int				is_num_arg_in_this_pholder(char *format) //
+int				is_num_arg_in_this_pholder(char *format)
 {
-
 	while (*format && (*format != '%'))
 	{
 		if (*format == '$')

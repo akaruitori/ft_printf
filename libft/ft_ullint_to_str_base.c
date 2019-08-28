@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ullint_to_str_base.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtimeon <dtimeon@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 23:34:33 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/07/28 18:49:56 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 16:11:18 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	count_len(unsigned long long int n, int base)
 	int		len;
 
 	len = 1;
-	while (n /= base )
+	while (n /= base)
 		len++;
 	return (len);
 }

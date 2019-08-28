@@ -6,7 +6,7 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 15:49:12 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/28 14:42:38 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 16:02:51 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ void			**save_args(va_list ap, t_pholder **pholders, int args_num)
 {
 	t_arg_use	**arg_uses;
 	void		**args;
-
 
 	arg_uses = save_arg_uses(pholders, args_num);
 	if (!is_valid_uses(arg_uses))

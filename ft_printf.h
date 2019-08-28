@@ -6,7 +6,7 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/30 20:54:14 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/28 14:17:25 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 16:09:14 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,6 @@ typedef struct				s_colour
 	void					(*write_function)(void);
 }							t_colour;
 
-
 /*
 ** modifier_checkers
 */
@@ -163,7 +162,6 @@ int							is_correct_property_order(char **s, int n_arg_flag);
 int							is_correct_length_modifier(char **s);
 int							is_correct_modifiers_order(char *s);
 int							check_for_lh_modifiers(t_modifier *mod, char *s);
-
 
 /*
 ** procent_checkers

@@ -6,7 +6,7 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 15:54:14 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/28 15:41:35 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 16:17:36 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void		read_int_arg(va_list ap, char *type, int purpose,
 			if (purpose == WIDTH_VALUE)
 				read_width_value_from_arg(pholder, ap);
 			else if (purpose == PRECISION_VALUE)
-				read_precision_value_from_arg(pholder, ap); // negative prec?
+				read_precision_value_from_arg(pholder, ap);
 		}
 		else
 		{
@@ -58,7 +58,8 @@ static void		read_uint_arg(va_list ap, char *type, t_pholder *pholder)
 	else
 	{
 		pholder->arg = ft_malloc_or_exit(sizeof(unsigned long long int));
-		*(unsigned long long int *)(pholder->arg) = va_arg(ap, unsigned long long int);
+		*(unsigned long long int *)(pholder->arg) = va_arg(ap,
+													unsigned long long int);
 	}
 }
 
@@ -86,7 +87,7 @@ static void		read_pointer_arg(va_list ap, char *type, t_pholder *pholder)
 	}
 }
 
-void		read_args(va_list ap, t_arg_use **arg_uses)
+void			read_args(va_list ap, t_arg_use **arg_uses)
 {
 	int		i;
 	char	*type;
@@ -95,7 +96,6 @@ void		read_args(va_list ap, t_arg_use **arg_uses)
 	while (arg_uses[i])
 	{
 		type = arg_uses[i]->type;
-
 		if (*type == 'i')
 			read_int_arg(ap, type, arg_uses[i]->purpose, arg_uses[i]->pholder);
 		else if (*type == 'u')

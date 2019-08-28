@@ -6,7 +6,7 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 15:40:26 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/28 15:31:08 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 16:13:26 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@ t_width			*initialize_width(void)
 	t_width		*new_width;
 
 	new_width = (t_width *)ft_malloc_or_exit(sizeof(t_width));
-
- 	new_width->value = 0;
+	new_width->value = 0;
 	new_width->is_from_arg = 0;
 	new_width->arg_pos = 0;
 	return (new_width);

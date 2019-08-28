@@ -6,7 +6,7 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 19:58:47 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/28 15:40:37 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 16:18:27 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void				apply_alt_form_uint(char **s, int base)
 		temp = *s;
 		if (*temp && *temp == ' ' && *(temp + 1) && *(temp + 1) == ' ')
 		{
-			offset = - ft_strlen(prefix);
+			offset = -ft_strlen(prefix);
 			while (*temp++ == ' ')
 				offset++;
 			ft_strncpy(*s + offset, prefix, ft_strlen(prefix));
@@ -63,7 +63,8 @@ void				apply_flags_uint(t_pholder *pholder, int base)
 	if (pholder->flags->alt_form)
 	{
 		if (arg)
-			if (!(*pholder->converted_arg == '0' && pholder->arg_type->is_octal))
+			if (!(*pholder->converted_arg == '0' && 
+					pholder->arg_type->is_octal))
 				apply_alt_form_uint(&pholder->converted_arg, base);
 		if (!pholder->converted_arg[0] && pholder->arg_type->is_octal)
 			pholder->converted_arg = ft_strcpy(ft_strnew(2), "0");
