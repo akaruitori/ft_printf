@@ -6,7 +6,7 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 19:51:24 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/28 16:51:01 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 16:57:02 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void				convert_float_full(long double num, t_pholder *pholder)
 	sign = get_sign(num);
 	num = (num >= 0.l ? num : -num);
 	precision = (pholder->precision && (pholder->precision->value >= 0) ?
-				 pholder->precision->value : 6);
+					pholder->precision->value : 6);
 	num += calculate_rounding(num, precision);
 	if (num > (unsigned long long int)-1)
 		convert_huge_float_full(num, pholder);

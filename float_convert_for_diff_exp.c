@@ -6,7 +6,7 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 19:50:42 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/28 16:39:24 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 16:56:47 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void						convert_medium_float_full(long double num,
 	integer = (unsigned long long)num;
 	num -= integer;
 	temp_str_integer = ft_ullint_to_str_base(integer, 10);
-	if (!temp_str_integer || !(temp_str_fraction = 
+	if (!temp_str_integer || !(temp_str_fraction =
 		fractional_part_to_str(num, ft_strlen(temp_str_integer), pholder)))
 		malloc_error_exit();
 	pholder->converted_arg = ft_strjoin(temp_str_integer, temp_str_fraction);
