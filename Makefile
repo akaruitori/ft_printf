@@ -47,10 +47,6 @@ CFLAGS = -Wall -Wextra -Werror -g
 
 all: $(NAME)
 
-test:
-	 @gcc -g type_test.c -o test -I . -I ./libft -L . libftprintf.a
-
-
 $(NAME): $(OBJECTS_DIR) $(OBJECTS)
 	@ar rc $(NAME) $(OBJECTS)
 	@ranlib $(NAME)
@@ -66,11 +62,11 @@ $(OBJECTS_DIR):
 	@mkdir $(LIB_OBJECTS_DIR)
 
 clean:
-	/bin/rm -f $(OBJECTS)
-	/bin/rm -fr $(OBJECTS_DIR)
-	/bin/rm -fr $(LIB_OBJECTS_DIR)
+	@/bin/rm -f $(OBJECTS)
+	@/bin/rm -fr $(OBJECTS_DIR)
+	@/bin/rm -fr $(LIB_OBJECTS_DIR)
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	@/bin/rm -f $(NAME)
 
 re: fclean all

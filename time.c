@@ -6,7 +6,7 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 00:38:39 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/28 15:41:35 by dtimeon          ###   ########.fr       */
+/*   Updated: 2019/08/28 17:23:55 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void				convert_time(t_pholder *pholder)
 		pholder->converted_arg = time_to_str(time);
 	else
 		pholder->converted_arg = full_date_time_to_str(time);
+	ft_memdel((void **)&time);
 	if (pholder->width)
 	{
 		if (pholder->flags && pholder->flags->left_align)
