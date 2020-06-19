@@ -18,27 +18,33 @@
 # include <float.h>
 # include <stdint.h>
 
-# define SPECIFIERS "%diouxXbaAfFeEgGcspk"
-# define NOT_SUPPORTED_SPECIFIERS "DCS"
-# define LENGTH_MODIFIERS "hlL"
-# define FLAGS "0-+ #'"
-# define NUM_ARG 1
-# define WIDTH_VALUE 2
-# define PRECISION_VALUE 3
-# define HEX_DIGITS "0123456789abcdef"
-# define DBL_EXP_LEN 11
-# define LDBL_EXP_LEN 16
-# define DBL_MAN_LEN 52
-# define LDBL_MAN_LEN 64
-# define DBL_EXP_MASK 0x7ff
-# define DBL_MAN_MASK 0xfffffffffffff
-# define LDBL_EXP_MASK 0x7fff
-# define LDBL_MAN_MASK 0xffffffffffffffff
-# define DBL_EXP_BIAS 1023
-# define LDBL_EXP_BIAS 16386
-# define SECONDS_IN_A_DAY (24 * 60 * 60)
-# define SECONDS_IN_A_YEAR 31556926
-# define COLOURS_NUM 3
+# define SPECIFIERS					"%diouxXbaAfFeEgGcspk"
+# define NOT_SUPPORTED_SPECIFIERS	"DCS"
+# define LENGTH_MODIFIERS			"hlL"
+# define FLAGS						"0-+ #'"
+
+# define NUM_ARG					1
+# define WIDTH_VALUE				2
+# define PRECISION_VALUE			3
+
+# define HEX_DIGITS					"0123456789abcdef"
+
+# define DBL_EXP_LEN				11
+# define LDBL_EXP_LEN				16
+# define DBL_MAN_LEN				52
+# define LDBL_MAN_LEN				64
+
+# define DBL_EXP_MASK				0x7ff
+# define DBL_MAN_MASK				0xfffffffffffff
+# define LDBL_EXP_MASK				0x7fff
+# define LDBL_MAN_MASK				0xffffffffffffffff
+
+# define DBL_EXP_BIAS				1023
+# define LDBL_EXP_BIAS				16386
+
+# define SECONDS_IN_A_DAY			(24 * 60 * 60)
+# define SECONDS_IN_A_YEAR			31556926
+# define COLOURS_NUM				3
 
 typedef struct				s_flags
 {
@@ -107,7 +113,7 @@ typedef struct				s_pholder
 	t_modifier				*modifier;
 	unsigned int			is_uppercase;
 	unsigned int			is_procent;
-	unsigned char			ignore_precision; //
+	unsigned char			ignore_precision;
 }							t_pholder;
 
 typedef struct				s_arg_use
