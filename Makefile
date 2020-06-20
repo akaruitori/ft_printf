@@ -103,14 +103,14 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-TEST = test
+EXAMPLE = example
 
-TEST_MAIN = testing.c
+EXAMPLE_MAIN = example.c
 
 all: $(NAME)
 
-$(TEST): $(TEST_MAIN) $(NAME)
-	 @$(CC) $(TEST_MAIN) -o $(TEST) -I $(INC_PRINTF_DIR) -I $(INC_LIB_DIR) -L . $(NAME)
+$(EXAMPLE): $(EXAMPLE_MAIN) $(NAME)
+	 @$(CC) $(EXAMPLE_MAIN) -o $(EXAMPLE) -I $(INC_PRINTF_DIR) -I $(INC_LIB_DIR) -L . $(NAME)
 
 
 $(NAME): $(OBJECTS_DIR) $(OBJECTS)
@@ -122,7 +122,7 @@ $(OBJECTS_DIR)%.o: $(SRC_DIR)%.c $(INC_PRINTF)
 	@$(CC) $(CFLAGS) -I $(INC_PRINTF_DIR) -I $(INC_LIB_DIR) -c $< -o $@
 
 $(LIB_OBJECTS_DIR)%.o: $(LIB_DIR)%.c $(INC_LIBFT)
-	@$(CC) $(CFLAGS) -I $(LIB_DIR) -c $< -o $@
+	@$(CC) $(CFLAGS) -g -I $(LIB_DIR) -c $< -o $@
 
 $(OBJECTS_DIR):
 	@mkdir $(OBJECTS_DIR)
