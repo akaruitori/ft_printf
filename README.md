@@ -8,7 +8,7 @@ _Recoded libc printf function_
 > * No `switch` and `case` statements
 > * No variabe declaration and assignment on the same line (i.e. no `int sum = 0;`)
 > * No multiline or complicated macroses
-> * No mare than 5 functions per file
+> * No more than 5 functions per file
 
   
   
