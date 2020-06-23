@@ -1,15 +1,17 @@
 # ft_printf
-_Recoded libc printf function_  
+_Recoded libc printf function_
   
-
+  ___
+    
 > ### Please note the school's restrictions & codestyle rules (so the code won't seem that wierd):
 > * No `for` loops
 > * No `switch` and `case` statements
 > * No variabe declaration and assignment on the same line (i.e. no `int sum = 0;`)
 > * No multiline or complicated macroses
 > * No mare than 5 functions per file
-___
 
+  
+  
 ## Usage:
 ```bash
 git clone ft_printf && cd ft_printf && make
