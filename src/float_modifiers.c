@@ -6,7 +6,7 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 19:57:12 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/28 16:08:51 by dtimeon          ###   ########.fr       */
+/*   Updated: 2020/06/23 22:54:35 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 void				apply_width_left_align(t_pholder *pholder, int len)
 {
-	int				fill_len;
 	char			*temp;
 
-	fill_len = pholder->width->value - len;
 	temp = pholder->converted_arg;
 	if (!(pholder->converted_arg = ft_strnew(pholder->width->value + 1)))
 		malloc_error_exit();

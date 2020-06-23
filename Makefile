@@ -62,7 +62,9 @@ LIB_FILES = ft_abs.c \
 			ft_strjoin.c \
 			ft_strlen.c \
 			ft_strnchr.c \
+			ft_strncmp.c \
 			ft_strncpy.c \
+			ft_strnequ.c \
 			ft_strnew.c \
 			ft_strnstr.c \
 			ft_strtol.c \
@@ -101,7 +103,7 @@ LIB_OBJECT_FILES = $(LIB_FILES:.c=.o)
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -ggdb
 
 EXAMPLE = example
 
@@ -110,7 +112,7 @@ EXAMPLE_MAIN = example.c
 all: $(NAME)
 
 $(EXAMPLE): $(EXAMPLE_MAIN) $(NAME)
-	 @$(CC) $(EXAMPLE_MAIN) -o $(EXAMPLE) -I $(INC_PRINTF_DIR) -I $(INC_LIB_DIR) -L . $(NAME)
+	 @$(CC) -ggdb $(EXAMPLE_MAIN) -o $(EXAMPLE) -I $(INC_PRINTF_DIR) -I $(INC_LIB_DIR) -L . $(NAME)
 
 
 $(NAME): $(OBJECTS_DIR) $(OBJECTS)
@@ -122,7 +124,7 @@ $(OBJECTS_DIR)%.o: $(SRC_DIR)%.c $(INC_PRINTF)
 	@$(CC) $(CFLAGS) -I $(INC_PRINTF_DIR) -I $(INC_LIB_DIR) -c $< -o $@
 
 $(LIB_OBJECTS_DIR)%.o: $(LIB_DIR)%.c $(INC_LIBFT)
-	@$(CC) $(CFLAGS) -g -I $(LIB_DIR) -c $< -o $@
+	@$(CC) $(CFLAGS) -ggdb -I $(LIB_DIR) -c $< -o $@
 
 $(OBJECTS_DIR):
 	@mkdir $(OBJECTS_DIR)

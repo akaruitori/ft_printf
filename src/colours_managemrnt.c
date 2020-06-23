@@ -6,7 +6,7 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 16:11:50 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/28 16:31:31 by dtimeon          ###   ########.fr       */
+/*   Updated: 2020/06/24 01:54:12 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,18 @@ static char			*find_colour_tag(t_colour colours[COLOURS_NUM],
 									int *c_num, char *line, int line_len)
 {
 	int				i;
-	char			*tag_st;
+	char			*tag_start;
 
 	i = 0;
-	while (i < COLOURS_NUM)
+    tag_start = ft_strchr(line, '{');
+	while (tag_start && i < COLOURS_NUM)
 	{
-		tag_st = ft_strnstr(line, colours[i].name, line_len);
-		if (tag_st)
-			if (ft_strnstr(tag_st, "{eoc}", line_len - (tag_st - line)))
+		if (tag_start &&
+            ft_strnequ(tag_start, colours[i].name, ft_strlen(colours[i].name)))
+			if (ft_strnstr(tag_start, "{eoc}", line_len - (tag_start - line)))
 			{
 				*c_num = i;
-				return (tag_st);
+				return (tag_start);
 			}
 		i++;
 	}

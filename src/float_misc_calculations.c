@@ -6,7 +6,7 @@
 /*   By: dtimeon <dtimeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 19:42:28 by dtimeon           #+#    #+#             */
-/*   Updated: 2019/08/28 16:51:37 by dtimeon          ###   ########.fr       */
+/*   Updated: 2020/06/24 00:11:47 by dtimeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int				get_float_exp(long double num)
 	int			result;
 
 	result = 0;
-	while ((long long int)num >= 10)
+	while (num >= 10.L)
 	{
 		num /= 10.l;
 		result++;
